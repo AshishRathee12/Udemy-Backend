@@ -1,16 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react';
 import './App.css'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import User from './users/pages/User';
+import NewPlace from './places/pages/NewPlace';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      
-    </>
+    <Router>
+      {/* Now switch will stop at the first match and ignore the rest. */}
+      <Switch>
+        {/* exact is used to the user componet only show in / path  */}
+        <Route path='/' exact>
+          <User />
+        </Route>
+        <Route path='/places/new' exact>
+          <NewPlace />
+        </Route>
+        {/* redirect is used to show when the path doesn't matches */}
+        {/* Authentication: If user is not logged in → send them to /login. */}
+        <Redirect to='/' />
+      </Switch>
+    </Router>
   )
 }
 
-export default App
+export default App;
