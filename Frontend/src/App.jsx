@@ -3,12 +3,14 @@ import './App.css'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import User from './users/pages/User';
 import NewPlace from './places/pages/NewPlace';
+import MainNavigation from './shared/components/UIElements/Navigation/MainNavigation';
 
 function App() {
 
   return (
     <Router>
       {/* Now switch will stop at the first match and ignore the rest. */}
+      <MainNavigation />
       <Switch>
         {/* exact is used to the user componet only show in / path  */}
         <Route path='/' exact>
