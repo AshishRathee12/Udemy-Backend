@@ -3,7 +3,7 @@ import './App.css'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import User from './users/pages/User';
 import NewPlace from './places/pages/NewPlace';
-import MainNavigation from './shared/components/UIElements/Navigation/MainNavigation';
+import MainNavigation from './shared/components/Navigation/MainNavigation';
 import UserPlaces from './places/pages/UserPlaces';
 
 function App() {
