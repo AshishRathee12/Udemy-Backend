@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import User from './users/pages/User';
 import NewPlace from './places/pages/NewPlace';
 import MainNavigation from './shared/components/UIElements/Navigation/MainNavigation';
+import UserPlaces from './places/pages/UserPlaces';
 
 function App() {
 
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path='/places/new' exact>
           <NewPlace />
+        </Route>
+        <Route path='/:userId/places' exact>
+          <UserPlaces />
         </Route>
         {/* redirect is used to show when the path doesn't matches */}
         {/* Authentication: If user is not logged in → send them to /login. */}
