@@ -5,6 +5,7 @@ import User from './users/pages/User';
 import NewPlace from './places/pages/NewPlace';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import UserPlaces from './places/pages/UserPlaces';
+import UpdatePlaces from './places/pages/UpdatePlaces';
 
 function App() {
 
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path='/:userId/places' exact>
           <UserPlaces />
+        </Route>
+        <Route path="/places/:placeId">
+          <UpdatePlaces />
         </Route>
         {/* redirect is used to show when the path doesn't matches */}
         {/* Authentication: If user is not logged in → send them to /login. */}

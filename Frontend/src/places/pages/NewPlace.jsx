@@ -5,23 +5,26 @@ import { useFormik } from "formik";
 import { signUpSchema } from '../../shared/components/FormElements/Schemas';
 const initialValues = {
   name: '',
-  email: ''
+  // email: ''
+  textarea: "",
+  address:''
 }
 
 export default function NewPlace() {
   // all are provide by formik we have to just write in code 
   // const formik = useFormik({
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
     initialValues,
     validationSchema: signUpSchema,
     onSubmit: (values, { setSubmitting, resetForm }) => {
       // setSubmitting(false);
+      console.log("submitted")
       console.log(values); // stops default submission
-      resetForm(); //for clearing the data after submission
+      // resetForm(); //for clearing the data after submission
 
     }
   });
-  // console.log(formik)
+
 
   return (
     <form className='form-container' onSubmit={handleSubmit}>
@@ -41,7 +44,7 @@ export default function NewPlace() {
         {errors.name && touched.name ? <p className='form-error'>{errors.name}</p> : null}
       </div>
 
-      <div>
+      {/* <div>
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -54,9 +57,37 @@ export default function NewPlace() {
           onBlur={handleBlur}
         />
         {errors.email && touched.email ? <p className='form-error'>{errors.email}</p> : null}
+      </div> */}
+      <div>
+        <label htmlFor="address">Address</label>
+        <input
+          type="text"
+          autoComplete='off'
+          name="address"
+          id="address"
+          placeholder="Address"
+          value={values.address}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+        {errors.address && touched.address ? <p className='form-error'>{errors.address}</p> : null}
+      </div>
+      <div>
+        <label htmlFor="textarea">Description</label>
+        <textarea
+          autoComplete='off'
+          name='textarea'
+          id='textarea'
+          placeholder='Enter description'
+          value={values.textarea}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          rows={3}
+        />
+        {errors.textarea && touched.textarea ? <p className='form-error'>{errors.textarea}</p> : null}
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" >Submit</button>
     </form>
   );
 }
